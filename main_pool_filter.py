@@ -57,11 +57,15 @@ from solvers.column_gen import run_column_generation
 # Configuration
 # ===========================================================================
 
-DATA_DIR        = r"C:\Users\u894632\OneDrive - Tilburg University\Documents\Research\IRP\Data"
-INSTANCES_FILE  = "instances_extended.pkl"
-RESULTS_DIR     = "results"
+# All paths are relative to the folder containing this script, so the script
+# can be started from any working directory and on any operating system.
+ROOT            = Path(__file__).resolve().parent
 
-SOURCE_PKL      = r"results\results_0.85demand_big_ws101_gf_t20.pkl"   # stored pools
+DATA_DIR        = str(ROOT)                          # folder containing Input_data_<size>.xlsx
+INSTANCES_FILE  = str(ROOT / "instances_extended.pkl")
+RESULTS_DIR     = str(ROOT / "results")
+
+SOURCE_PKL      = str(ROOT / "results" / "results_0.85demand_big_ws101_gf_t20.pkl")   # stored pools
 OUTPUT_TAG      = "pool_filter_big_ws101_t20"                           # output file name
 
 NETWORK_SIZE    = "big"
@@ -89,10 +93,10 @@ ROUTE_FEATURES = ["n_depots", "n_stations", "duration", "n_stations_net", "total
 # name -> (path to joblib (model, scaler), feature list the model was trained on)
 # "random" is handled separately and needs no model.
 FILTERS: Dict[str, tuple] = {
-    "svm_rbf":         (r"results\svm_model.pkl",                  ALL_FEATURES),
-    "svm_linear":      (r"results\svm_linear_model.pkl",           ALL_FEATURES),
-    "lr":              (r"results\lr_model.pkl",                   ALL_FEATURES),
-    "svm_route_props": (r"results\svm_route_properties_model.pkl", ROUTE_FEATURES),
+    "svm_rbf":         (str(ROOT / "results" / "svm_model.pkl"),                  ALL_FEATURES),
+    "svm_linear":      (str(ROOT / "results" / "svm_linear_model.pkl"),           ALL_FEATURES),
+    "lr":              (str(ROOT / "results" / "lr_model.pkl"),                   ALL_FEATURES),
+    "svm_route_props": (str(ROOT / "results" / "svm_route_properties_model.pkl"), ROUTE_FEATURES),
     "random":          (None,                                      None),
 }
 

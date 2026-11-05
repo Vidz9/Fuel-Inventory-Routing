@@ -1,0 +1,27 @@
+# Python cache (contains local file paths)
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Gurobi logs and model dumps
+*.log
+*.lp
+*.mps
+*.sol
+
+# Private files (e.g. the anonymisation mapping) — never commit
+*PRIVATE*
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
