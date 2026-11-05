@@ -95,7 +95,7 @@ class IRPData:
 
 def _data_path(data_dir: str, network_size: str) -> str:
     """Return the full path to the Excel file for a given network size."""
-    filename = f"Input data {network_size}.xlsx"
+    filename = f"Input_data_{network_size}.xlsx"
     path = os.path.join(data_dir, filename)
     if not os.path.isfile(path):
         raise FileNotFoundError(
@@ -119,7 +119,8 @@ def load_data(
 
     Parameters
     ----------
-    network_size    : 'small', 'medium', or 'large'
+    network_size    : 'small', 'medium', 'big' or 'company'
+                      (reads Input_data_<network_size>.xlsx)
     data_dir        : path to the folder that contains the Excel files
     one_compartment : if True, merge all tank compartments into one
                       (i.e. treat each truck as single-compartment)

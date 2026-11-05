@@ -49,26 +49,30 @@ from plotting import plot_route_level_distributions
 # Configuration
 # ===========================================================================
 
+# All paths are relative to the folder containing this script, so the script
+# can be started from any working directory and on any operating system.
+ROOT = Path(__file__).resolve().parent
+
 N_INSTANCES:          int   = 20
 TIME_LIMIT:           float = 20.0          # minutes total per instance
 DEMAND_COEFFICIENTS:  list  = [0.85]
 NETWORK_SIZE:         str   = "big"
-DATA_DIR:             str   = r""           # put directory containing the data
-INSTANCES_FILE:       str   = "instances_extended.pkl"
-RESULTS_DIR:          str   = "results"
+DATA_DIR:             str   = str(ROOT)     # folder containing Input_data_<size>.xlsx
+INSTANCES_FILE:       str   = str(ROOT / "instances_extended.pkl")
+RESULTS_DIR:          str   = str(ROOT / "results")
 RANDOM_SEED:          int   = 11
 PARAMETER_VALUES_VT:  list  = [(3, 5)]
 MAX_WARMSTART_ROUTES:      int   = 102    # 0 = no warm start
 DEMAND_AWARE_WARMSTART:    bool  = True   # True = demand-guided; False = random 
 GEN_FRACTIONS:        list  = []   # generation fraction checkpoints; one BP result per entry
-SVM_MODEL_PATH:       str   = r"results\svm_linear_model.pkl"  # path to saved (svm, scaler) tuple
-SVM_TOP_P:            float = 0.5           # keep top 40% of routes by predicted probability
+SVM_MODEL_PATH:       str   = str(ROOT / "results" / "svm_linear_model.pkl")  # saved (svm, scaler) tuple
+SVM_TOP_P:            float = 0.5           # keep top 50% of routes by predicted probability
 USE_SVM_FILTER:       bool  = True         # if False, skip filtered integer solve entirely
 USE_RANDOM_FILTER:    bool  = False         # if True, also run random pool compression
 RANDOM_FILTER_TOP_P:  float = 0.5           # fraction of pool to keep randomly
 RANDOM_FILTER_SEED:   int   = 42            # random seed for reproducibility
 USE_LR_FILTER:        bool  = False        # if True, also run logistic regression filter
-LR_MODEL_PATH:        str   = r"results\lr_model.pkl"  # path to saved (lr, scaler) tuple
+LR_MODEL_PATH:        str   = str(ROOT / "results" / "lr_model.pkl")  # saved (lr, scaler) tuple
 LR_TOP_P:             float = 0.5           # keep top 50% of routes by LR predicted probability
 INSTANCE_RANGE:       tuple = (11, 30)      # inclusive range of instances to solve
 
