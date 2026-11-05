@@ -1,4 +1,5 @@
-# Learning to Filter Route Pools: A Three-Phase Matheuristic for a Multi-Depot, Multi-Product Inventory Routing Problem
+# Learning-Enhanced Branch-and-Price Matheuristic for
+Multi-Depot Multi-Trip Fuel Inventory Routing
 
 Code and data for the paper of the same title (under review).
 
